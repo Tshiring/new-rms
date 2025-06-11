@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "references": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["components/*"],
+      // "@/lib/*": ["lib/*"],
+      // "@/assets/*": ["assets/*"],
+      // "@/constants/*": ["constants/*"],
+      // "@/router/*": ["router/*"],
+      // "@/hooks/*": ["hooks/*"],
+      // "@/store/*": ["store/*"],
+      // "@/api/*": ["api/*"]
+    }
+  }
+}

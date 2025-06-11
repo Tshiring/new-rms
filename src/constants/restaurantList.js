@@ -1,0 +1,58 @@
+export const restaurantList = [
+  {
+    id: 1,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+  {
+    id: 2,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+  {
+    id: 3,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+  {
+    id: 4,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+  {
+    id: 5,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+  {
+    id: 6,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+  {
+    id: 7,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+  {
+    id: 8,
+    name: "Restaurant Name",
+    rating: 4.2,
+    maxRating: 5,
+    image: "/images/restaurant-interior.png",
+  },
+];
