@@ -9,7 +9,7 @@ const Home = lazy(() => import("@/views/landing"));
 const DashboardLayout = lazy(() =>
   import("@/components/layout/DashboardLayout")
 );
-const Dashboard = lazy(() => import("@/views/dashboard"));
+const Dashboard = lazy(() => import("@/views/Dashboard"));
 const RestaurantSignup = lazy(() => import("@/views/auth/RestaurantSignup"));
 const OTP = lazy(() => import("@/views/auth/OTP"));
 const BuildProfile = lazy(() => import("@/views/restaurantAdmin/BuildProfile"));
