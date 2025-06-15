@@ -1,35 +1,27 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
-    Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarInset,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarProvider,
-    SidebarTrigger,
-} from "@/components/ui/sidebar"
-import {
-    Bell,
-    ChefHat,
-    LogOut,
-    Search,
-    User
-} from "lucide-react"
-import { useState } from "react"
-import { Outlet } from "react-router"
-import { navigationItems } from "../../constants/navigationItems"
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Bell, ChefHat, LogOut, Search, User } from "lucide-react";
+import { useState } from "react";
+import { Outlet } from "react-router";
+import { navigationItems } from "../../constants/navigationItems";
 
 function AppSidebar() {
   const handleLogout = () => {
-    console.log("🚪 Logout clicked")
-    console.log("⏰ Logout timestamp:", new Date().toISOString())
-    // Add logout logic here
-    alert("Logout functionality triggered! Check console for details.")
-  }
+    localStorage.clear();
+    window.location.href = "/signin";
+  };
 
   return (
     <Sidebar className="border-r-0">
@@ -53,9 +45,9 @@ function AppSidebar() {
                   href={item.href}
                   className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors"
                   onClick={(e) => {
-                    e.preventDefault()
-                    console.log(`📱 Navigating to: ${item.title}`)
-                    console.log(`🔗 URL: ${item.href}`)
+                    e.preventDefault();
+                    console.log(`📱 Navigating to: ${item.title}`);
+                    console.log(`🔗 URL: ${item.href}`);
                   }}
                 >
                   <item.icon className="w-5 h-5" />
@@ -78,25 +70,25 @@ function AppSidebar() {
         </Button>
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
 
 function DashboardHeader() {
-  const [searchQuery, setSearchQuery] = useState("")
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = (e) => {
-    e.preventDefault()
-    console.log("🔍 Search submitted:", searchQuery)
-    console.log("⏰ Search timestamp:", new Date().toISOString())
-  }
+    e.preventDefault();
+    console.log("🔍 Search submitted:", searchQuery);
+    console.log("⏰ Search timestamp:", new Date().toISOString());
+  };
 
   const handleProfileClick = () => {
-    console.log("👤 Profile icon clicked")
-  }
+    console.log("👤 Profile icon clicked");
+  };
 
   const handleNotificationClick = () => {
-    console.log("🔔 Notification icon clicked")
-  }
+    console.log("🔔 Notification icon clicked");
+  };
 
   return (
     <header className="border-b border-gray-200 px-6 py-4">
@@ -104,7 +96,9 @@ function DashboardHeader() {
         <div className="flex items-center gap-4">
           <SidebarTrigger className="lg:hidden" />
           <div>
-            <h1 className="text-2xl font-bold text-purple-700">RestaurantAdmin Dashboard</h1>
+            <h1 className="text-2xl font-bold text-purple-700">
+              RestaurantAdmin Dashboard
+            </h1>
             <p className="text-gray-600">Welcome back, Admin!</p>
           </div>
         </div>
@@ -149,9 +143,8 @@ function DashboardHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
-
 
 export default function Dashboard() {
   return (
@@ -166,5 +159,5 @@ export default function Dashboard() {
         </SidebarInset>
       </div>
     </SidebarProvider>
-  )
+  );
 }

@@ -25,12 +25,12 @@ const Router = () => {
         <Route path={path.OTP} element={<OTP />} />
       </Route>
       {/* PRIVATE ROUTES */}
-      {/* <Route element={<ProtectedRoute />}> */}
-      <Route path={path.BUILD_PROFILE} element={<BuildProfile />} />
-      <Route element={<DashboardLayout />}>
-        <Route path={path.DASHBOARD} element={<Dashboard />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path={path.BUILD_PROFILE} element={<BuildProfile />} />
+        <Route element={<DashboardLayout />}>
+          <Route path={path.DASHBOARD} element={<Dashboard />} />
+        </Route>
       </Route>
-      {/* </Route> */}
     </Routes>
   );
 };

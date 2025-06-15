@@ -42,7 +42,7 @@ export default function Signin() {
         if (response.adminProfile === false) {
           navigate("/build-profile");
         } else {
-          navigate("/restrodashboard");
+          navigate("/dashboard");
         }
         // Handle successful login
         toast.success("Login successful!");
