@@ -135,14 +135,7 @@ export default function RestaurantSignup() {
           restaurantName: "",
           category: "",
         });
-        navigate(OTP, {state: { email: formData.email } });
-        //   localStorage.setItem("accessToken", response.AccessToken);
-        // localStorage.setItem("refreshToken", response.RefreshToken);
-        // if (response.adminProfile === false) {
-        //   navigate(BUILD_PROFILE);
-        // } else {
-        //   navigate(DASHBOARD);
-        // }
+        navigate(OTP, { state: { email: formData.email } });
         toast.success(response || "Registration successful!");
         return "Your restaurant account has been created successfully!";
       },

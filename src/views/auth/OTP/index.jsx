@@ -25,26 +25,21 @@ export default function OTP() {
     },
   });
 
-  // const { mutateAsync, isPending } = useOTPMutation();
   const { mutateAsync } = useOPTVerifyMutation();
 
   const navigate = useNavigate();
   const { email } = useLocation().state || {};
-  console.log(email);
-  
 
   const onSubmit = (data) => {
-    console.log(data);
-
-    toast.promise(mutateAsync(data), {
+    
+    const payload = {
+      otp: data.otp,
+      email: email,
+    };
+    toast.promise(mutateAsync(payload), {
       loading: "Verifying OTP...",
       success: (response) => {
-        navigate(SIGNIN, {
-          state: {
-            otp: response.data.otp,
-            email,
-          },
-        });
+        navigate(SIGNIN);
         return response.message || "OTP verified successfully";
       },
       error: (error) => {
@@ -57,7 +52,6 @@ export default function OTP() {
   return (
     <>
       <div className="flex items-center justify-center h-screen w-full bg-gray-100 ">
-        <Input />
         <div className="max-w-[400px] h-min rounded-lg shadow-md p-6 text-center">
           <div className="text-center mb-10 flex flex-col items-center">
             <h5 className="mb-3 mt-6">Please check your email!</h5>
