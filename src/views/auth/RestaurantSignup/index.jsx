@@ -122,9 +122,6 @@ export default function RestaurantSignup() {
       retaurentType: formData.category,
     }
 
-    console.log("📊 Full Form Data:", formData);
-    console.log("📊 Full Form Data:", payload);
-
     toast.promise(mutateAsync(payload), {
       loading: "Creating your restaurant account...",
       success: (response) => {
@@ -136,7 +133,6 @@ export default function RestaurantSignup() {
           category: "",
         });
         navigate(OTP, { state: { email: formData.email } });
-        toast.success(response || "Registration successful!");
         return "Your restaurant account has been created successfully!";
       },
       error: (error) => {
