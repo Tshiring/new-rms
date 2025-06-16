@@ -303,21 +303,26 @@ function Step3Form({ form, onPrevious }) {
     const file = event.target.files?.[0];
     if (!file) return;
 
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error("File size must be under 2MB.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("file", file);
-   
+
     toast.promise(uploadImage(formData), {
       loading: "Uploading logo...",
       success: (data) => {
         if (data.fileUrl) {
           setLogoPreview(data.fileUrl);
-          // form.setValue("profileURL", data.fileUrl, { shouldValidate: true });
         }
         return "Logo uploaded successfully!";
       },
       error: (error) => {
-        console.error("File upload error:", error);
-        return "Failed to upload logo.";
+        console.log(error);
+        
+        return error.message || "Failed to upload logo.";
       },
     });
   };
@@ -378,7 +383,7 @@ function Step3Form({ form, onPrevious }) {
 }
 
 export default function BuildProfile() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(3);
   const [formData, setFormData] = useState({});
 
   // Form for step 1

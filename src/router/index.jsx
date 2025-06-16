@@ -3,6 +3,7 @@ import * as path from "./path";
 import { Route, Routes } from "react-router";
 import PublicRoute from "./routes/PublicRoute";
 import ProtectedRoute from "./routes/ProtectedRoutes";
+import PageNotFound from "../views/PageNotFound";
 
 const Signin = lazy(() => import("@/views/auth/Signin"));
 const Home = lazy(() => import("@/views/landing"));
@@ -31,6 +32,7 @@ const Router = () => {
           <Route path={path.DASHBOARD} element={<Dashboard />} />
         </Route>
       </Route>
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };
