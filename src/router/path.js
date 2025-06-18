@@ -10,3 +10,5 @@ export const BUILD_PROFILE = "/build-profile";
 
 export const MENU_MANAGEMENT = "/menu-management";
 export const ADD_MENU = "/menu-management/add";
+export const SUPERADMIN_DASH="/superadmindash";
+export const ADDSERVICES="/superadmindash/addservices";

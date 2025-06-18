@@ -16,6 +16,10 @@ const OTP = lazy(() => import("@/views/auth/OTP"));
 const BuildProfile = lazy(() => import("@/views/restaurantAdmin/BuildProfile"));
 const MenuManagement = lazy(() => import("@/views/menu-management"));
 const AddMenu = lazy(() => import("@/views/menu-management/AddMenu"));
+const Superadmindash = lazy(() =>
+  import("@/views/superadmin/pages/Superadmindash")
+);
+const Addservices = lazy(() => import("@/views/servicee/Addservices"));
 
 const Router = () => {
   return (
@@ -34,6 +38,9 @@ const Router = () => {
           <Route path={path.DASHBOARD} element={<Dashboard />} />
           <Route path={path.MENU_MANAGEMENT} element={<MenuManagement />} />
           <Route path={path.ADD_MENU} element={<AddMenu />} />
+          <Route path={path.SUPERADMIN_DASH} element={<Superadmindash />}>
+            <Route path={path.ADDSERVICES} element={<Addservices />} />
+          </Route>
         </Route>
       </Route>
       <Route path="*" element={<PageNotFound />} />

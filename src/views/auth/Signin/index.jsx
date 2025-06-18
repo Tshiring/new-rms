@@ -7,7 +7,10 @@ import { useSigninMutation } from "./hooks/useSigninMutation";
 import { toast } from "sonner";
 import { Link, useNavigate } from "react-router";
 import { RESTAURANT_SIGNUP } from "@/router/path";
+import { SUPERADMIN_DASH } from "@/router/path";
 
+//Using zustand
+import useRole from "../../../store/useRole";
 // Zod schema for validation
 const schema = z.object({
   email: z
@@ -33,15 +36,22 @@ export default function Signin() {
   const { mutateAsync, isPending } = useSigninMutation();
   const navigate = useNavigate();
 
+  const {setRole}= useRole();  // accessing useRole
+  
   const onSubmit = async (data) => {
     toast.promise(mutateAsync(data), {
       loading: "Signing in...",
       success: (response) => {
         localStorage.setItem("accessToken", response.AccessToken);
         localStorage.setItem("refreshToken", response.RefreshToken);
+
+        setRole(response.role);
         if (response.adminProfile === false) {
           navigate("/build-profile");
-        } else {
+        } else if(response.role==="SUPER_ADMIN"){
+          navigate("/superadmindash")
+        }
+        else{
           navigate("/dashboard");
         }
         // Handle successful login
