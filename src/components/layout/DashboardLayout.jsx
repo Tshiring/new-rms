@@ -12,17 +12,20 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { NavLink } from "react-router-dom";
 import { Bell, ChefHat, LogOut, Search, User } from "lucide-react";
 import { useState } from "react";
 import { Outlet } from "react-router";
-import { navigationItems } from "../../constants/navigationItems";
-
+import { filteredItems } from "../../constants/navigationItems";
+import useRole from "../../store/useRole";
 function AppSidebar() {
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = "/signin";
   };
 
+
+ 
   return (
     <Sidebar className="border-r-0">
       <SidebarHeader className="border-b border-purple-200 pb-4">
@@ -35,24 +38,23 @@ function AppSidebar() {
 
       <SidebarContent className="px-2 mt-4">
         <SidebarMenu className="space-y-2">
-          {navigationItems.map((item) => (
+          {filteredItems.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton
                 asChild
                 className="w-full justify-start text-black hover:bg-purple-600 hover:text-white data-[active=true]:bg-purple-600 data-[active=true]:text-white"
               >
-                <a
-                  href={item.href}
+                <NavLink
+                to={item.href}
                   className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors"
                   onClick={(e) => {
-                    e.preventDefault();
                     console.log(`📱 Navigating to: ${item.title}`);
                     console.log(`🔗 URL: ${item.href}`);
                   }}
                 >
                   <item.icon className="w-5 h-5" />
                   <span className="font-medium">{item.title}</span>
-                </a>
+                </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
@@ -90,6 +92,7 @@ function DashboardHeader() {
     console.log("🔔 Notification icon clicked");
   };
 
+   const{role}= useRole(); //zustand
   return (
     <header className="border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
@@ -97,9 +100,9 @@ function DashboardHeader() {
           <SidebarTrigger className="lg:hidden" />
           <div>
             <h1 className="text-2xl font-bold text-purple-700">
-              RestaurantAdmin Dashboard
+              {role==="SUPER_ADMIN"?'Superadmin Dashboard' : 'Restaurant Admin Dashboard'}
             </h1>
-            <p className="text-gray-600">Welcome back, Admin!</p>
+            <p className="text-gray-600">Welcome back, {role==="SUPER_ADMIN"?'Superadmin' : 'admin'}</p>
           </div>
         </div>
 

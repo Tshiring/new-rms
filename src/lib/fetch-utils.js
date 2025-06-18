@@ -55,6 +55,7 @@ async function refreshAccessToken() {
 // }
 
 export async function fetchData(url, customHeaders) {
+  console.log(BASE_URL)
   const token = localStorage.getItem("accessToken");
 
   const headers = new Headers({
