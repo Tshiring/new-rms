@@ -12,6 +12,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { NavLink } from "react-router-dom";
 import { Bell, ChefHat, LogOut, Search, User } from "lucide-react";
 import { useState } from "react";
 import { Outlet } from "react-router";
@@ -43,18 +44,17 @@ function AppSidebar() {
                 asChild
                 className="w-full justify-start text-black hover:bg-purple-600 hover:text-white data-[active=true]:bg-purple-600 data-[active=true]:text-white"
               >
-                <a
-                  href={item.href}
+                <NavLink
+                to={item.href}
                   className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors"
                   onClick={(e) => {
-                    e.preventDefault();
                     console.log(`📱 Navigating to: ${item.title}`);
                     console.log(`🔗 URL: ${item.href}`);
                   }}
                 >
                   <item.icon className="w-5 h-5" />
                   <span className="font-medium">{item.title}</span>
-                </a>
+                </NavLink>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
