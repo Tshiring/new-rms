@@ -15,6 +15,7 @@ const RestaurantSignup = lazy(() => import("@/views/auth/RestaurantSignup"));
 const OTP = lazy(() => import("@/views/auth/OTP"));
 const BuildProfile = lazy(() => import("@/views/restaurantAdmin/BuildProfile"));
 const Superadmindash=lazy(()=> import("@/views/superadmin/pages/Superadmindash"))
+const Addservices= lazy(()=> import("@/views/servicee/Addservices"))
 
 const Router = () => {
   return (
@@ -31,7 +32,9 @@ const Router = () => {
         <Route path={path.BUILD_PROFILE} element={<BuildProfile />} />
         <Route element={<DashboardLayout />}>
           <Route path={path.DASHBOARD} element={<Dashboard />} />
-                    <Route path={path.SUPERADMIN_DASH} element={<Superadmindash/>} />
+                    <Route path={path.SUPERADMIN_DASH} element={<Superadmindash/>}>
+                    <Route path={path.ADDSERVICES} element={<Addservices />} />
+                    </Route>
 
 
         </Route>
