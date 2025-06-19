@@ -31,14 +31,15 @@ const Router = () => {
       <Route element={<ProtectedRoute />}>
         <Route path={path.BUILD_PROFILE} element={<BuildProfile />} />
         <Route element={<DashboardLayout />}>
-          <Route path={path.DASHBOARD} element={<Dashboard />} />
+        <Route path={path.DASHBOARD} element={<Dashboard />} />
                     <Route path={path.SUPERADMIN_DASH} element={<Superadmindash/>}>
+                    <Route index element={<Dashboard />} />
+                     </Route>
                     <Route path={path.ADDSERVICES} element={<Addservices />} />
-                    </Route>
-
-
+                   
         </Route>
       </Route>
+      
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

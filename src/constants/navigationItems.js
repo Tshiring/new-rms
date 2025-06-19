@@ -17,27 +17,27 @@ const navigationItems = [
     {
     title: "Add Services",
     icon: FolderPlus,
-    href: "/superadmindash/addservices",
+    href: "/addservices",
     roles: ['SUPER_ADMIN', 'ADMIN']
 
   },
   {
       title: "Manage Services",
     icon: Book,
-    href: "/superadmindash/manageservices",
+    href: "/manageservices",
     roles: ['SUPER_ADMIN', 'ADMIN']
   },
     {
       title: "Add plans",
     icon:  Projector ,
-    href: "/superadmindash/addplans",
+    href: "/addplans",
  roles: ['SUPER_ADMIN']
 
   }, 
     {
     title: "Verify admins",
     icon: ShieldCheck,
-    href: "/superadmindash/verifyadmins",
+    href: "/verifyadmins",
    roles: ['SUPER_ADMIN']
   },
 
@@ -86,6 +86,7 @@ const navigationItems = [
 ];
 
 
-const role = useRole.getState().role;
-console.log(role);
-export const filteredItems= navigationItems.filter(item=> !item.roles || item.roles.includes(role));
+const roles = useRole.getState().roles;
+export const filteredItems= navigationItems.filter(
+  item => !item.roles || item.roles.some(r => roles.includes(r))
+);

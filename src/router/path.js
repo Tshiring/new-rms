@@ -8,4 +8,4 @@ export const OTP = "/otp";
 export const DASHBOARD = "/dashboard";
 export const BUILD_PROFILE = "/build-profile";
 export const SUPERADMIN_DASH="/superadmindash";
-export const ADDSERVICES="/superadmindash/addservices";
+export const ADDSERVICES="/addservices";
