@@ -50,8 +50,6 @@ const mockMenuItems = [
   {
     id: "2",
     name: "Caesar Salad",
-    description:
-      "Fresh romaine lettuce with parmesan cheese, croutons, and caesar dressing",
     availability: true,
   },
   {
