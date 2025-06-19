@@ -14,8 +14,12 @@ const Dashboard = lazy(() => import("@/views/Dashboard"));
 const RestaurantSignup = lazy(() => import("@/views/auth/RestaurantSignup"));
 const OTP = lazy(() => import("@/views/auth/OTP"));
 const BuildProfile = lazy(() => import("@/views/restaurantAdmin/BuildProfile"));
-const Superadmindash=lazy(()=> import("@/views/superadmin/pages/Superadmindash"))
-const Addservices= lazy(()=> import("@/views/servicee/Addservices"))
+const MenuManagement = lazy(() => import("@/views/menu-management"));
+const AddMenu = lazy(() => import("@/views/menu-management/AddMenu"));
+const Superadmindash = lazy(() =>
+  import("@/views/superadmin/pages/Superadmindash")
+);
+const Addservices = lazy(() => import("@/views/servicee/Addservices"));
 
 const Router = () => {
   return (

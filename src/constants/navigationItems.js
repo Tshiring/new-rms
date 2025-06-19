@@ -9,23 +9,25 @@ import {
   FolderPlus,
   Book,
   Projector,
-  ShieldCheck
+  ShieldCheck,
 } from "lucide-react";
 import useRole from "../store/useRole";
 
 const navigationItems = [
-    {
+  {
     title: "Add Services",
     icon: FolderPlus,
+    href: "/superadmindash/addservices",
+    roles: ["SUPER_ADMIN", "ADMIN"],
     href: "/addservices",
     roles: ['SUPER_ADMIN', 'ADMIN']
 
   },
   {
-      title: "Manage Services",
+    title: "Manage Services",
     icon: Book,
     href: "/manageservices",
-    roles: ['SUPER_ADMIN', 'ADMIN']
+    roles: ["SUPER_ADMIN", "ADMIN"],
   },
     {
       title: "Add plans",
@@ -37,6 +39,8 @@ const navigationItems = [
     {
     title: "Verify admins",
     icon: ShieldCheck,
+    href: "/superadmindash/verifyadmins",
+    roles: ["SUPER_ADMIN"],
     href: "/verifyadmins",
    roles: ['SUPER_ADMIN']
   },
@@ -45,43 +49,43 @@ const navigationItems = [
     title: "Menu Management",
     icon: Utensils,
     href: "/dashboard/menu",
-    roles: ['SUPER_ADMIN', 'ADMIN']
+    roles: ["SUPER_ADMIN", "ADMIN"],
   },
   {
     title: "Order Management",
     icon: ShoppingCart,
     href: "/dashboard/orders",
-    roles: ['SUPER_ADMIN', 'ADMIN']
+    roles: ["SUPER_ADMIN", "ADMIN"],
   },
   {
     title: "Table Reservation",
     icon: Calendar,
     href: "/dashboard/reservations",
-   roles: ['SUPER_ADMIN','ADMIN']
+    roles: ["SUPER_ADMIN", "ADMIN"],
   },
   {
     title: "Staff Management",
     icon: Users,
     href: "/dashboard/staff",
-    roles:['ADMIN']
+    roles: ["ADMIN"],
   },
   {
     title: "Track Inventory",
     icon: Package,
     href: "/dashboard/inventory",
-      roles:['ADMIN']
+    roles: ["ADMIN"],
   },
   {
     title: "Sales Report",
     icon: DollarSign,
     href: "/dashboard/sales",
-    roles: ['ADMIN']
+    roles: ["ADMIN"],
   },
   {
     title: "Customers",
     icon: UserCheck,
     href: "/dashboard/customers",
-    roles:['ADMIN']
+    roles: ["ADMIN"],
   },
 ];
 
