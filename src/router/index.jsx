@@ -20,7 +20,8 @@ const Superadmindash = lazy(() =>
   import("@/views/superadmin/pages/Superadmindash")
 );
 const Addservices = lazy(() => import("@/views/servicee/Addservices"));
-
+const Manageservices = lazy(() => import("@/views/servicee/Manageservices"));
+const Servicebyid = lazy(() => import("@/views/servicee/Servicebyid"));
 const Router = () => {
   return (
     <Routes>
@@ -40,6 +41,10 @@ const Router = () => {
                     <Route index element={<Dashboard />} />
                      </Route>
                     <Route path={path.ADDSERVICES} element={<Addservices />} />
+                    <Route path={path.MANAGESERVICES} element={<Manageservices />} />
+                    <Route path={path.SERVICE_BY_ID} element={<Servicebyid />} />
+                    
+
                    
         </Route>
       </Route>
