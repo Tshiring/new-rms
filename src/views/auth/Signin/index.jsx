@@ -1,16 +1,18 @@
+import { SIGNUP } from "@/router/path";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ChefHat, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { ChefHat, Eye, EyeOff } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useSigninMutation } from "./hooks/useSigninMutation";
-import { toast } from "sonner";
 import { Link, useNavigate } from "react-router";
-import { RESTAURANT_SIGNUP } from "@/router/path";
-import { SUPERADMIN_DASH } from "@/router/path";
+import { toast } from "sonner";
+import { z } from "zod";
+import { useSigninMutation } from "./hooks/useSigninMutation";
 
 //Using zustand
 import useRole from "../../../store/useRole";
+import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { Button } from "@/components/ui/button";
+import { jwtDecode } from "jwt-decode";
 // Zod schema for validation
 const schema = z.object({
   email: z
@@ -56,10 +58,9 @@ export default function Signin() {
         console.log(roles)
         if (response.adminProfile === false) {
           navigate("/build-profile");
-        } else if(response.role==="SUPER_ADMIN"){
-          navigate("/superadmindash")
-        }
-        else{
+        } else if (response.role === "SUPER_ADMIN") {
+          navigate("/superadmindash");
+        } else {
           navigate("/dashboard");
         }
         // Handle successful login
@@ -71,6 +72,14 @@ export default function Signin() {
       },
     });
     console.log("📊 Full Form Data:", data);
+  };
+
+  const handleGoogleSuccess = (credentialResponse) => {
+    const { credential } = credentialResponse;
+    localStorage.setItem("googleAccessToken", credential);
+    console.log("Google Credential:", jwtDecode(credential));
+
+    navigate("/dashboard");
   };
 
   return (
@@ -85,6 +94,12 @@ export default function Signin() {
           </h1>
           <p className="text-lg text-gray-600">👨‍🍳 Sign in with us!</p>
         </div>
+        <GoogleLogin
+          onSuccess={handleGoogleSuccess}
+          onError={(error) =>
+            toast.error(error.message || "Google login failed")
+          }
+        />
         <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
           <div className="space-y-4">
             <div>
@@ -180,7 +195,10 @@ export default function Signin() {
             )}
           </button>
           <div className="text-center space-y-2">
-            <Link to={RESTAURANT_SIGNUP} className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline transition-colors">
+            <Link
+              to={SIGNUP}
+              className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline transition-colors"
+            >
               Don't have an account?
             </Link>
             <br />

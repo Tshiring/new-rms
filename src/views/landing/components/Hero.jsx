@@ -2,27 +2,26 @@ export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/src/assets/images/resturant.jpg')",
-        }}
-      >
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
-      </div>
+      {/* Dark overlay for better text readability */}
+      <img
+        src="/src/assets/images/resturant.jpg"
+        alt=""
+        className="absolute inset-0"
+      />
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+        <h1 className="text-shadow-lg text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
           Welcome to the
           <br />
           <span className="block mt-2">Restaurant Management System.</span>
         </h1>
 
         {/* Optional subtitle */}
-        <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-          Streamline your restaurant operations with our comprehensive management solution
+        <p className="text-shadow-lg mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+          Streamline your restaurant operations with our comprehensive
+          management solution
         </p>
 
         {/* Call-to-action buttons */}
@@ -40,5 +39,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

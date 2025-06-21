@@ -18,17 +18,14 @@ import { useState } from "react";
 import { Outlet } from "react-router";
 import { filteredItems } from "../../constants/navigationItems";
 import {hasRole} from "../../store/useRole";
-
-
-
+import { googleLogout } from "@react-oauth/google";
 function AppSidebar() {
   const handleLogout = () => {
+    googleLogout();
     localStorage.clear();
     window.location.href = "/signin";
   };
 
-
- 
   return (
     <Sidebar className="border-r-0">
       <SidebarHeader className="border-b border-purple-200 pb-4">
@@ -48,7 +45,7 @@ function AppSidebar() {
                 className="w-full justify-start text-black hover:bg-purple-600 hover:text-white data-[active=true]:bg-purple-600 data-[active=true]:text-white"
               >
                 <NavLink
-                to={item.href}
+                  to={item.href}
                   className="flex items-center gap-3 px-3 py-2 rounded-lg transition-colors"
                   onClick={(e) => {
                     console.log(`📱 Navigating to: ${item.title}`);
@@ -95,7 +92,7 @@ function DashboardHeader() {
     console.log("🔔 Notification icon clicked");
   };
 
-
+  
   return (
     <header className="border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">

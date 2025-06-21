@@ -6,6 +6,7 @@ import ProtectedRoute from "./routes/ProtectedRoutes";
 import PageNotFound from "../views/PageNotFound";
 
 const Signin = lazy(() => import("@/views/auth/Signin"));
+const Signup = lazy(() => import("@/views/auth/UserSignup"));
 const Home = lazy(() => import("@/views/landing"));
 const DashboardLayout = lazy(() =>
   import("@/components/layout/DashboardLayout")
@@ -29,6 +30,7 @@ const Router = () => {
       <Route element={<PublicRoute />}>
         <Route path={path.HOME} element={<Home />} />
         <Route path={path.SIGNIN} element={<Signin />} />
+        <Route path={path.SIGNUP} element={<Signup />} />
         <Route path={path.RESTAURANT_SIGNUP} element={<RestaurantSignup />} />
         <Route path={path.OTP} element={<OTP />} />
       </Route>
