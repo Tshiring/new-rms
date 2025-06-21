@@ -8,7 +8,7 @@ const Addservices = () => {
     title: "",
     description: "",
    
-    image: null,
+    logoFile: null,
      price: 0
   });
 
@@ -16,7 +16,7 @@ const Addservices = () => {
     title: "",
     description: "",
    
-    image: null,
+    logoFile: null,
      price: 0
   };
 
@@ -36,7 +36,7 @@ const Addservices = () => {
     formData.append("title", form.title);
     formData.append("description", form.description);
     formData.append("price", form.price);
-    if (form.image) formData.append("image", form.image);
+    if (form.image) formData.append("logoFile", form.logoFile);
 
     mutate(formData, {
       onSuccess: () => {setForm(initialFormState)
@@ -134,6 +134,7 @@ const Addservices = () => {
         
 //       </form>
 //     </div>
+isLoading? (<h2>The page is loading</h2>):(
 <div className="w-screen max-w-6xl mx-auto mt-10 bg-white p-12 rounded-2xl shadow-xl border border-gray-200">
   <h2 className="text-3xl font-bold text-center text-red-600 mb-6">Add New Service</h2>
 
@@ -174,13 +175,13 @@ const Addservices = () => {
 
     {/* Image Upload */}
     <div>
-      <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
+      <label htmlFor="logoFile" className="block text-sm font-medium text-gray-700 mb-1">
         Upload Image
       </label>
       <input
         type="file"
-        id="image"
-        name="image"
+        id="logoFile"
+        name="logoFile"
         accept="image/*"
         ref={fileInputRef}
         onChange={handleChange}
@@ -218,7 +219,7 @@ const Addservices = () => {
     </div>
   </form>
 </div>
-
+)
 
   );
 };
