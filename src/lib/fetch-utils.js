@@ -128,3 +128,69 @@ export async function postData(url, data, customHeaders) {
 
   return makeRequest();
 }
+
+
+
+export async function patchData(url, data, customHeaders = {}) {
+  const token = localStorage.getItem("accessToken");
+
+  const isFormData = data instanceof FormData;
+
+  const headers = {
+    ...customHeaders,
+    ...(token && { Authorization: `Bearer ${token}` }),
+    ...(!isFormData && { "Content-Type": "application/json" }), 
+  };
+
+  const body = isFormData ? data : JSON.stringify(data);
+
+  const response = await fetch(`${BASE_URL}/${url}`, {
+    method: "PATCH",
+    headers,
+    body,
+  });
+
+  if (!response.ok) {
+    let errorMessage = "Something went wrong.";
+    try {
+      const errorData = await response.json();
+      errorMessage = errorData.message || errorMessage;
+    } catch {}
+    throw new Error(errorMessage);
+  }
+
+  return response.json();
+}
+
+
+export async function deleteData(url, data = null, customHeaders = {}) {
+  const token = localStorage.getItem("accessToken");
+
+  const headers = {
+    ...customHeaders,
+  };
+
+  let body = null;
+
+  if (data) {
+    headers["Content-Type"] = "application/json";
+    body = JSON.stringify(data);
+  }
+
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+
+  const response = await fetch(`${BASE_URL}/${url}`, {
+    method: "DELETE",
+    headers,
+    body,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || "Something went wrong.");
+  }
+
+  return response.json();
+}
