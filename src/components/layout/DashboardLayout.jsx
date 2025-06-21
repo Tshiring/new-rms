@@ -12,14 +12,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router";
 import { Bell, ChefHat, LogOut, Search, User } from "lucide-react";
 import { useState } from "react";
 import { Outlet } from "react-router";
 import { filteredItems } from "../../constants/navigationItems";
-import useRole from "../../store/useRole";
+import {hasRole} from "../../store/useRole";
 import { googleLogout } from "@react-oauth/google";
-
 function AppSidebar() {
   const handleLogout = () => {
     googleLogout();
@@ -93,7 +92,7 @@ function DashboardHeader() {
     console.log("🔔 Notification icon clicked");
   };
 
-  const { role } = useRole(); //zustand
+  
   return (
     <header className="border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
@@ -101,13 +100,9 @@ function DashboardHeader() {
           <SidebarTrigger className="lg:hidden" />
           <div>
             <h1 className="text-2xl font-bold text-purple-700">
-              {role === "SUPER_ADMIN"
-                ? "Superadmin Dashboard"
-                : "Restaurant Admin Dashboard"}
+              {hasRole("SUPER_ADMIN")?'Superadmin Dashboard' : 'Restaurant Admin Dashboard'}
             </h1>
-            <p className="text-gray-600">
-              Welcome back, {role === "SUPER_ADMIN" ? "Superadmin" : "admin"}
-            </p>
+            <p className="text-gray-600">Welcome back, {hasRole("SUPER_ADMIN")?'Superadmin' : 'admin'}</p>
           </div>
         </div>
 

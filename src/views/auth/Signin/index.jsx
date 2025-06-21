@@ -38,8 +38,8 @@ export default function Signin() {
   const { mutateAsync, isPending } = useSigninMutation();
   const navigate = useNavigate();
 
-  const { setRole } = useRole(); // accessing useRole
-
+  const {setRoles}= useRole.getState()  // accessing useRole
+  
   const onSubmit = async (data) => {
     toast.promise(mutateAsync(data), {
       loading: "Signing in...",
@@ -47,7 +47,15 @@ export default function Signin() {
         localStorage.setItem("accessToken", response.AccessToken);
         localStorage.setItem("refreshToken", response.RefreshToken);
 
-        setRole(response.role);
+        const { roles, role } = response; // Assuming response contains roles and role
+        const categoryRoles =[];
+  if (Array.isArray(roles)) {
+    categoryRoles.push(...roles);
+  } else if (typeof role === "string") {
+    categoryRoles.push(role);
+  }
+        setRoles(categoryRoles);
+        console.log(roles)
         if (response.adminProfile === false) {
           navigate("/build-profile");
         } else if (response.role === "SUPER_ADMIN") {

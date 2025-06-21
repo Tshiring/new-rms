@@ -21,7 +21,8 @@ const Superadmindash = lazy(() =>
   import("@/views/superadmin/pages/Superadmindash")
 );
 const Addservices = lazy(() => import("@/views/servicee/Addservices"));
-
+const Manageservices = lazy(() => import("@/views/servicee/Manageservices"));
+const Servicebyid = lazy(() => import("@/views/servicee/Servicebyid"));
 const Router = () => {
   return (
     <Routes>
@@ -37,14 +38,19 @@ const Router = () => {
       <Route element={<ProtectedRoute />}>
         <Route path={path.BUILD_PROFILE} element={<BuildProfile />} />
         <Route element={<DashboardLayout />}>
-          <Route path={path.DASHBOARD} element={<Dashboard />} />
-          <Route path={path.MENU_MANAGEMENT} element={<MenuManagement />} />
-          <Route path={path.ADD_MENU} element={<AddMenu />} />
-          <Route path={path.SUPERADMIN_DASH} element={<Superadmindash />}>
-            <Route path={path.ADDSERVICES} element={<Addservices />} />
-          </Route>
+        <Route path={path.DASHBOARD} element={<Dashboard />} />
+                    <Route path={path.SUPERADMIN_DASH} element={<Superadmindash/>}>
+                    <Route index element={<Dashboard />} />
+                     </Route>
+                    <Route path={path.ADDSERVICES} element={<Addservices />} />
+                    <Route path={path.MANAGESERVICES} element={<Manageservices />} />
+                    <Route path={path.SERVICE_BY_ID} element={<Servicebyid />} />
+                    
+
+                   
         </Route>
       </Route>
+      
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
