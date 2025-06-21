@@ -13,7 +13,7 @@ return useMutation({
       queryClient.invalidateQueries(["services"]);
     },
     onError: () => {
-      toast.error("❌ Failed to update service");
+      toast.error("❌ Failed to update the service");
     },
   });
 };
